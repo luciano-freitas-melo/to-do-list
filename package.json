@@ -4,7 +4,11 @@
   "description": "Projeto de to do list usando NodeJs",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "back": "node server.js",
+    "front": "vite",
+    "start": "concurrently \"npm run back\" \"npm run front\"",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -21,6 +25,15 @@
   },
   "homepage": "https://github.com/luciano-freitas-melo/to-do-list#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "concurrently": "^7.4.0",
+    "express": "^4.18.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "vite": "^3.1.0"
   }
 }

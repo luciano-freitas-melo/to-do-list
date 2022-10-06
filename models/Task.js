@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 
 const taskSchema = new mongoose.Schema({
-    task: {
+    name: {
         type: String,
         require: true
     },
     check: {
         type: Boolean,
-        require: true
+        default: false
     },
     date: {
         type: Date,

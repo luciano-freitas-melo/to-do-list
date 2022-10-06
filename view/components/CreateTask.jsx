@@ -1,21 +1,27 @@
+import axios from "axios";
 import { useState } from "react";
 
 
 export const CreateTask = () => {
     const [task, setTask] = useState("");
-    2
-    const onSubmit = (e) => {
-        e.preventDefault();
-        alert(task)
+
+    const onSubmit = async (e) => {
+        try {
+            const response = await axios.put('/create',
+                {
+                    name: task
+                })
+               
+        } catch (error) {
+            console.log('Erro:', error);
+        }
     }
     return (
-        <div className="">
-            <form onSubmit={onSubmit}>
-                <input type='text'
-                    value={task}
-                    onChange={(e) => setTask(e.target.value)} />
-                <button type="submit">Adicionar</button>
-            </form>
-        </div>
+        <form className="flex w-full justify-center items-center" onSubmit={onSubmit}>
+            <input type='text'
+                value={task}
+                onChange={(e) => setTask(e.target.value)} />
+            <button type="submit">Adicionar</button>
+        </form>
     )
 }

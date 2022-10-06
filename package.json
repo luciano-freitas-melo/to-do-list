@@ -4,7 +4,7 @@
   "description": "Projeto de to do list usando NodeJs",
   "main": "index.js",
   "scripts": {
-    "back": "node server.js",
+    "back": "nodemon server.js",
     "front": "vite",
     "start": "concurrently \"npm run back\" \"npm run front\"",
     "build": "vite build",
@@ -27,6 +27,8 @@
   "dependencies": {
     "concurrently": "^7.4.0",
     "express": "^4.18.1",
+    "mongoose": "^6.6.5",
+    "nodemon": "^2.0.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

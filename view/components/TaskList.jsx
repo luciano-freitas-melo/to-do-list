@@ -1,10 +1,10 @@
 import { TaskItem } from "./Task"
 
 
-export const TaskList = (tasks) => {
+export const TaskList = ({tasks}) => {
     return (
         <div>
-            {Array.from(tasks.tasks).map((item, index) => {
+            {Array.from(tasks).map((item, index) => {
                     return (
                         <TaskItem task={item} key={index}/>
                     )

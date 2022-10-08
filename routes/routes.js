@@ -4,6 +4,6 @@ const TaskController = require("../controller/TaskController")
 
 
 routes.get("/", TaskController.getAllTasks)
-routes.put("/create", TaskController.createTask)
+routes.post("/create", TaskController.createTask)
 
 module.exports = routes

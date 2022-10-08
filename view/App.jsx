@@ -1,27 +1,28 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { CreateTask } from './components/CreateTask';
-import { TaskItem } from './components/Task';
 import { TaskList } from './components/TaskList';
 
 export const App = () => {
   const [refreshContent, setRefreshContent] = useState(true);
   const [tasks, setTasks] = useState([]);
 
-  const getTasks = async () => {
-    try {
-      const response = await axios.get("/");
-      setTasks(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+  const toggleRefresh = () => {
+    setRefreshContent(!refreshContent);
   }
 
   useEffect(() => {
-    if (refreshContent) {
-      getTasks();
-      setRefreshContent(false);
+    async function getTasks() {
+      try {
+        const response = await axios.get("/");
+        setTasks(response.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
+
+    getTasks();
+
   }, [refreshContent])
 
 
@@ -29,7 +30,7 @@ export const App = () => {
   return (
     <div className='h-full w-full flex-col'>
       {/* if a new task has been created, the content in API must be refreshed */}
-      <CreateTask />
+      <CreateTask toggleRefresh={toggleRefresh} />
       <TaskList tasks={tasks} />
     </div>
   )
